@@ -6,6 +6,10 @@ a custom tabbar gradient indicator for flutter, and it support ios and android
 ![image](https://raw.githubusercontent.com/for-meng/tabbar_gradient_indicator_plus/main/images/example.jpg)
 
 
+## Update content.
+1. support set the direction of gradient.
+2. support set the radius of indicator.
+
 ## Getting Started
 
 1. Depend on it by adding this to your pubspec.yaml file: ```tabbar_gradient_indicator_plus: ^1.0.0```
