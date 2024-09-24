@@ -17,6 +17,7 @@ class TabBarGradientIndicator extends Decoration {
     this.gradientColor,
     this.gradientDirection = GradientDirection.horizontal,
     this.radius,
+    this.fixedWidth,
   });
 
   final List<Color>? gradientColor;
@@ -25,6 +26,7 @@ class TabBarGradientIndicator extends Decoration {
   final double indicatorWidth;
   final GradientDirection gradientDirection;
   final double? radius;
+  final double? fixedWidth;
 
   @override
   Decoration? lerpFrom(Decoration? a, double t) {
@@ -59,6 +61,7 @@ class TabBarGradientIndicator extends Decoration {
       indicatorWidth: indicatorWidth,
       gradientDirection: gradientDirection,
       radius: radius,
+      fixedWidth: fixedWidth,
       onChanged: onChanged,
     );
   }
@@ -72,12 +75,14 @@ class _UnderlinePainter extends BoxPainter {
     this.indicatorWidth = 2,
     required this.gradientDirection,
     required this.radius,
+    this.fixedWidth,
   }) : super(onChanged);
 
   final double indicatorWidth;
   final TabBarGradientIndicator decoration;
   final GradientDirection gradientDirection;
   final double? radius;
+  final double? fixedWidth;
 
   BorderSide get borderSide => decoration.borderSide;
 
@@ -91,11 +96,9 @@ class _UnderlinePainter extends BoxPainter {
     final Rect rect = offset &
         insets.deflateSize(
             (configuration.size ?? Size(indicatorWidth, indicatorWidth)));
-    Rect myRect = Rect.fromLTWH(
-        rect.left,
-        rect.bottom - indicatorWidth * 0.5 - 1,
-        rect.width,
-        indicatorWidth * 0.5);
+    final double width = fixedWidth ?? rect.width;
+    Rect myRect = Rect.fromLTWH(rect.left + (rect.width - width) / 2,
+        rect.bottom - indicatorWidth * 0.5 - 1, width, indicatorWidth * 0.5);
 
     final horizontal = gradientDirection == GradientDirection.horizontal;
     final from = horizontal ? Offset(myRect.left, 0) : Offset(0, myRect.top);
