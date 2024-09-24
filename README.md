@@ -2,10 +2,8 @@
 a custom tabbar gradient indicator for flutter, and it support ios and android
 
 ## Screenshots
-
-![image](https://github.com/ahyangnb/tabbar_gradient_indicator_plus/blob/main/images/example.jpg?raw=true)
-![image2](https://github.com/ahyangnb/tabbar_gradient_indicator_plus/blob/main/images/example2.jpeg?raw=true)
-
+| ![image](https://github.com/ahyangnb/tabbar_gradient_indicator_plus/blob/main/images/example.jpg?raw=true) | ![image2](https://github.com/ahyangnb/tabbar_gradient_indicator_plus/blob/main/images/example2.jpeg?raw=true) |
+|:---------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------------------------------------------------------:|
 
 ## Update content.
 1. support set the direction of gradient.
