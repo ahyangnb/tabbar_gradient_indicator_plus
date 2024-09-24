@@ -1,6 +1,6 @@
 name: tabbar_gradient_indicator_plus
 description: A Flutter tabbar gradient indicator support set the fixedWidth and direction of gradient. Writted with pure dart, supported both iOS and Android.
-version: 1.0.1
+version: 1.0.2
 homepage: https://github.com/ahyangnb/tabbar_gradient_indicator_plus
 
 environment:
