@@ -3,7 +3,8 @@ a custom tabbar gradient indicator for flutter, and it support ios and android
 
 ## Screenshots
 
-![image](https://raw.githubusercontent.com/for-meng/tabbar_gradient_indicator_plus/main/images/example.jpg)
+![image](https://github.com/ahyangnb/tabbar_gradient_indicator_plus/blob/main/images/example.jpg?raw=true)
+![image2](https://github.com/ahyangnb/tabbar_gradient_indicator_plus/blob/main/images/example2.jpeg?raw=true)
 
 
 ## Update content.
