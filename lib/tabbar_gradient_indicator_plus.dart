@@ -10,18 +10,21 @@ enum GradientDirection {
 }
 
 class TabBarGradientIndicator extends Decoration {
-  const TabBarGradientIndicator(
-      {this.borderSide = const BorderSide(width: 2.0, color: Colors.white),
-      this.insets = EdgeInsets.zero,
-      this.indicatorWidth = 2,
-      this.gradientColor,
-      this.gradientDirection = GradientDirection.horizontal});
+  const TabBarGradientIndicator({
+    this.borderSide = const BorderSide(width: 2.0, color: Colors.white),
+    this.insets = EdgeInsets.zero,
+    this.indicatorWidth = 2,
+    this.gradientColor,
+    this.gradientDirection = GradientDirection.horizontal,
+    this.radius,
+  });
 
   final List<Color>? gradientColor;
   final BorderSide borderSide;
   final EdgeInsetsGeometry insets;
   final double indicatorWidth;
   final GradientDirection gradientDirection;
+  final double? radius;
 
   @override
   Decoration? lerpFrom(Decoration? a, double t) {
@@ -51,26 +54,30 @@ class TabBarGradientIndicator extends Decoration {
   @override
   BoxPainter createBoxPainter([VoidCallback? onChanged]) {
     return _UnderlinePainter(
-        decoration: this,
-        gradientColor: gradientColor,
-        indicatorWidth: indicatorWidth,
-        gradientDirection: gradientDirection,
-        onChanged: onChanged);
+      decoration: this,
+      gradientColor: gradientColor,
+      indicatorWidth: indicatorWidth,
+      gradientDirection: gradientDirection,
+      radius: radius,
+      onChanged: onChanged,
+    );
   }
 }
 
 class _UnderlinePainter extends BoxPainter {
-  _UnderlinePainter(
-      {required this.decoration,
-      VoidCallback? onChanged,
-      this.gradientColor,
-      this.indicatorWidth = 2,
-      required this.gradientDirection})
-      : super(onChanged);
+  _UnderlinePainter({
+    required this.decoration,
+    VoidCallback? onChanged,
+    this.gradientColor,
+    this.indicatorWidth = 2,
+    required this.gradientDirection,
+    required this.radius,
+  }) : super(onChanged);
 
   final double indicatorWidth;
   final TabBarGradientIndicator decoration;
   final GradientDirection gradientDirection;
+  final double? radius;
 
   BorderSide get borderSide => decoration.borderSide;
 
@@ -100,7 +107,8 @@ class _UnderlinePainter extends BoxPainter {
       ..shader = ui.Gradient.linear(from, to, gradientColor ?? []);
 
     canvas.drawRRect(
-        RRect.fromRectAndRadius(myRect, Radius.circular(indicatorWidth * 0.25)),
+        RRect.fromRectAndRadius(
+            myRect, Radius.circular(radius ?? (indicatorWidth * 0.25))),
         paint);
   }
 }
